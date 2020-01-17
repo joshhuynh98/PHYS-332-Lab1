@@ -1,7 +1,7 @@
 const int l1 = 13;
 int brightness = 15;
 int timer = 0;
-int dimState = false;
+boolean dimState = false;
 
 void setup() {
   // put your setup code here, to run once:

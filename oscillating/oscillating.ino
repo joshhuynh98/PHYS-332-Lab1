@@ -1,6 +1,3 @@
-int currPos = 1;
-const int offset = 8;
-boolean upwards = true;
 
 void setup() {
   // put your setup code here, to run once:
@@ -13,19 +10,41 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(currPos+offset, HIGH);
-  delay(200);
-  digitalWrite(currPos+offset, LOW);
   
-  if (upwards) {
-    currPos++;
-    if (currPos==5) {
-      upwards = false;
+  downwards();
+  upwards();
+}
+
+void downwards() {
+  for (int j = 13; j>=9; j--) {
+    for (int i = 0; i < 20; i++) {
+      digitalWrite(j, HIGH);
+      int lastLed = j+1;
+      blink(lastLed, 2, 8);
     }
-  } else {
-    currPos--;
-    if (currPos==1) {
-      upwards = true;
-    }
+    digitalWrite(j, LOW);
   }
+  return;
+}
+
+void upwards() {
+  for (int j = 9; j<=13; j++) {
+    for (int i = 0; i < 20; i++) {
+      digitalWrite(j, HIGH);
+      int lastLed = j-1;
+      blink(lastLed, 2, 8);
+    }
+    digitalWrite(j, LOW);
+  }
+  return;
+}
+
+void blink(int led, int on_length, int off_length) {
+
+  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(on_length);                       // wait for a second
+  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+  delay(off_length);
+
+  return;
 }

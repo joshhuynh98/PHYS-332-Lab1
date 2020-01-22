@@ -59,7 +59,7 @@ void undim() {
   int i;
   int brightness;
 
-  for (brightness = 9; brightness>1; brightness--) {
+  for (brightness = 9; brightness>0; brightness--) {
     for (i = 0; i < 20; i++) {
       blink(brightness, 10-brightness);
     }
@@ -67,6 +67,7 @@ void undim() {
   return;
 }
 
+// Dr. Moore's code line 71-79
 void blink(int on_length, int off_length) {
 
   digitalWrite(l1, HIGH);   // turn the LED on (HIGH is the voltage level)

@@ -15,39 +15,16 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-/*
-  digitalWrite(l1, HIGH);
-  delay(1);
-  digitalWrite(l1, LOW);
-  delay(brightness);
 
-  timer += 1+(15-brightness);
-  
-  if (timer>100 && brightness>1 && !dimState) {
-    brightness--;
-    timer = 0;
-  }
-  else if (timer>100 && brightness<15 && dimState) {
-    brightness++;
-    timer = 0;
-  }
-
-  if (brightness==1) {
-    dimState = !dimState;
-  } else if (brightness==15) {
-    dimState = !dimState;
-  }
-*/
-
-  dim();
   undim();
+  dim();
 }
 
-void dim() {
+void undim() {
   int i;
   int brightness;
 
-  for (brightness = 1; brightness<10; brightness++) {
+  for (brightness = 0; brightness<10; brightness++) {
     for (i = 0; i < 20; i++) {
       blink(brightness, 10-brightness);
     }
@@ -55,11 +32,11 @@ void dim() {
   return;
 }
 
-void undim() {
+void dim() {
   int i;
   int brightness;
 
-  for (brightness = 9; brightness>0; brightness--) {
+  for (brightness = 10; brightness>0; brightness--) {
     for (i = 0; i < 20; i++) {
       blink(brightness, 10-brightness);
     }
